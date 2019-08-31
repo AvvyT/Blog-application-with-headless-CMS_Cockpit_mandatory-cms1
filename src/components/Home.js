@@ -13,7 +13,7 @@ function Home() {
 
         axios.get(api)
             .then((response) => {
-                console.log(response.data.entries);
+                //console.log(response.data.entries);
                 updateArticles(response.data.entries);
             })
             .catch(error => {
@@ -26,7 +26,6 @@ function Home() {
             <Helmet>
                 <title>Home page</title>
             </Helmet>
-            <h1>BloggApp</h1>
             <h3 style={{ color: 'purple' }}>Best-selling fiction authors</h3>
 
             <table className='style_tab'>

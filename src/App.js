@@ -10,8 +10,8 @@ import './App.css';
 function App() {
   return (
     <Router>
-      <div className="App">
-
+      <div className="App-header">
+        <h1>BloggApp</h1>
         <Route path="/" exact component={Home} />
         <Route path="/article/:id" component={Article} />
         <Route path="/authors" component={Authors} />

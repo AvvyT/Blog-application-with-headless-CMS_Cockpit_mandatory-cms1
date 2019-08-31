@@ -4,11 +4,28 @@
     margin: 15px;
     font-size: 20px;
     box-sizing: border-box;
-    padding: 5 10px;
+    padding: 20px;
     border: 2px solid rgb(235, 181, 232);
 }
 
 .style_td {
     margin: 0px;
     word-break: break-word;
+}
+
+.style_article {
+    margin: 10px;
+    padding: 4px;
+}
+
+.stylle_back {
+    margin: 12px;
+    width: 150px;
+    height: 50px;
+    border-radius: 7px;
+    font-weight: bold;
+    background: rgb(83, 135, 75);
+    border: 2px solid;
+    outline: none;
+    font-size: 20px;
 }
