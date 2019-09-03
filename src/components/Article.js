@@ -28,10 +28,11 @@ function Article() {
     }, [api]);
 
     return (
-        <div>
+        <div className="App-header">
             <Helmet>
                 <title>Article page</title>
             </Helmet>
+            <button className='stylle_back'><Link to={'/'}>Home page</Link></button>
 
             {articles.map((article) => (
                 <div key={article._id} className='style_article'>
@@ -42,7 +43,6 @@ function Article() {
                     <p>Nationality: {article.nationality}, Total books: {article.books}</p>
                 </div>
             ))}
-            <button className='stylle_back'><Link to={'/'}>Home page</Link></button>
 
         </div>
     );

@@ -4,8 +4,16 @@
     margin: 15px;
     font-size: 20px;
     box-sizing: border-box;
-    padding: 20px;
+    padding: 40px;
     border: 2px solid rgb(235, 181, 232);
+    border-radius: 15px;
+}
+
+.slyle_input {
+    border: 2px solid rgb(235, 181, 232);
+    border-radius: 5px;
+    font-size: 19px;
+    margin-bottom: 8px;
 }
 
 .style_td {
@@ -23,9 +31,28 @@
     width: 150px;
     height: 50px;
     border-radius: 7px;
+    text-decoration: none;
     font-weight: bold;
-    background: rgb(83, 135, 75);
-    border: 2px solid;
+    background: lightgreen;
+    border: 2px solid lightblue;
     outline: none;
     font-size: 20px;
+}
+
+.my_galleri {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 15px;
+    font-size: 19px;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+.one {
+    width: 40%;
+    border: 2px solid rgb(235, 181, 232);
+    padding: 20px;
+    margin: 10px;
 }
