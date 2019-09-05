@@ -4,33 +4,55 @@ import { Helmet } from 'react-helmet';
 import axios from 'axios';
 import './Home.css';
 
-const api = 'http://192.168.99.100:8080/api/collections/get/Articles?limit=10&skip=3';
 
-function Home() {
+function Home(props) {
     const [articles, updateArticles] = useState([]);
-    const [filtreradArticle, updatefiltreradArticle] = useState([]);
+    const [numberPosts, updateNumberposts] = useState(1);
+    const [currentPage, updateCurrentPage] = useState(1);
+
+    const limit = 3;
+    // då börjar page från 0, annars hopper över 3
+    let skip = (currentPage - 1) * limit;
+    let page = props.match.params.page;
+    const api = `http://192.168.99.100:8080/api/collections/get/Articles/Case?token=mytoken&sort[published_on]=-1&limit=${limit}&skip=${skip}&page=${page}`;
 
     useEffect(() => {
 
         axios.get(api)
             .then((response) => {
-                //console.log(response.data.entries);
+                //console.log(response.data.total);
+                updateNumberposts(response.data.total);
                 updateArticles(response.data.entries);
             })
             .catch(error => {
                 console.log(error);
             });
-    }, []);
+    }, [api]);
 
-    const Filtrera = () => {
-        axios.get('http://192.168.99.100:8080/api/collections/get/Articles?filter[{FILTERNAME}]={FILTERVALUE}')
-            .then((response) => {
-                //console.log(response.data.entries);
-                updateArticles(response.data.entries);
-            })
-            .catch(error => {
-                console.log(error);
-            });
+    const displaynum = () => {
+        // Logic for displaying page numbers
+        // Math.ceil => Round a number upward to its nearest integer
+        let pageNumbers = Math.ceil(numberPosts / limit);
+        //console.log(pageNumbers); // => 3
+
+        let allPages = [];
+        for (let index = 1; index <= pageNumbers; index++) {
+            allPages.push(index);
+        }
+        //console.log(allPages);
+
+        return <>
+            {allPages.map(number => (
+                <li
+                    key={number}
+                    onClick={() => {
+                        updateCurrentPage(number);
+                        console.log(currentPage);
+                    }}
+                >{number}
+                </li>
+            ))}
+        </>
     }
 
     return (
@@ -39,17 +61,6 @@ function Home() {
                 <title>Home page</title>
             </Helmet>
             <h3 style={{ color: 'purple' }}>Best-selling fiction authors</h3>
-
-            <label>Filter <input
-                type="text"
-                className='slyle_input'
-                placeholder=' Write one article..'
-                value={filtreradArticle}
-                onClick={Filtrera}
-                onChange={e => {
-                    updatefiltreradArticle(e.target.value);
-                }}
-            ></input></label>
 
             <button className='stylle_back'><Link to={'/authors'}>All authors</Link></button>
             <table className='style_tab'>
@@ -70,6 +81,9 @@ function Home() {
                     ))}
                 </tbody>
             </table>
+            <ul className="page-numbers">
+                {displaynum()}
+            </ul>
         </div>
     );
 }

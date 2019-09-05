@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
+import MDReactComponent from 'markdown-react-js';
 import axios from 'axios';
 
 
@@ -32,13 +33,13 @@ function Article() {
             <Helmet>
                 <title>Article page</title>
             </Helmet>
-            <button className='stylle_back'><Link to={'/'}>Home page</Link></button>
+            <button className='stylle_back'><Link to={'/page/1'}>Home page</Link></button>
 
             {articles.map((article) => (
                 <div key={article._id} className='style_article'>
                     <h2 style={{ color: 'purple' }}>{article.title}</h2>
                     <p>{article.author.display}, Max sales: {article.max_sales}</p>
-                    <p style={{ color: 'lightgreen' }}>{article.body}</p>
+                    <MDReactComponent text={`${article.body}`} />
                     <p>Published first storie: {article.published_on}</p>
                     <p>Nationality: {article.nationality}, Total books: {article.books}</p>
                 </div>

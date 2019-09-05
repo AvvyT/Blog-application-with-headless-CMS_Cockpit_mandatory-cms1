@@ -13,4 +13,6 @@
   color: white;
 }
 
-
+span>p {
+  color: lightgreen;
+}
