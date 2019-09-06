@@ -33,7 +33,7 @@ function Article() {
             <Helmet>
                 <title>Article page</title>
             </Helmet>
-            <button className='stylle_back'><Link to={'/page/1'}>Home page</Link></button>
+            <button className='stylle_back'><Link to={'/'}>Home page</Link></button>
 
             {articles.map((article) => (
                 <div key={article._id} className='style_article'>

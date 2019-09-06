@@ -47,7 +47,7 @@ function Home(props) {
                     key={number}
                     onClick={() => {
                         updateCurrentPage(number);
-                        console.log(currentPage);
+                        //console.log(currentPage);
                     }}
                 >{number}
                 </li>

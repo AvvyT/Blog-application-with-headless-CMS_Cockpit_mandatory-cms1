@@ -26,7 +26,7 @@ function Authors() {
             <Helmet>
                 <title>Authors page</title>
             </Helmet>
-            <button className='stylle_back'><Link to={'/page/1'}>Home page</Link></button>
+            <button className='stylle_back'><Link to={'/'}>Home page</Link></button>
             <h2 style={{ color: 'purple' }}>Authors Galleri</h2>
             <div className='my_galleri'>
                 {authors.map((author) => (
